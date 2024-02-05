@@ -1,0 +1,27 @@
+{% extends 'basic.html' %}
+{% block body_block %}
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        {% if det %}
+        <tr>
+            <td>{{det.name}}</td>
+            <td>{{det.username}}</td>
+            <td>{{det.email}}</td>
+
+            <td>
+            <form method="POST" action="{% url 'delete' email=email %}">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form></td>
+        </tr>
+        {% endif %}
+    </table>
+</div>
+
+{% endblock %}

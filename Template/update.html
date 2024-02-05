@@ -1,0 +1,62 @@
+{% extends 'basic.html' %}
+{% block body_block %}
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      {% if det %}
+      <form action="{% url 'Update' %}" method="POST">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" name="name" value="{{det.name}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" value="{{det.username}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" name="email" value="{{det.email}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" name="phone" value="{{det.phone}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" placeholder="Enter your password" name="password" value="{{det.password}}" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" placeholder="Confirm your password" name="confirm_password" value="{{det.password}}" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" value="male" id="dot-1" {% if det.gender == 'male' %}checked{% endif %}>
+          <input type="radio" name="gender" value="female" id="dot-2" {% if det.gender == 'female' %}checked{% endif %}>
+          <input type="radio" name="gender" value="others" id="dot-3" {% if det.gender == 'others' %}checked{% endif %}>
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Others</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Register">
+        </div>
+      </form>
+        {% endif %}
+    </div>
+  </div>
+  {% endblock %}
